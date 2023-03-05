@@ -1,8 +1,8 @@
-import useStyles from "../styles";
+import useStyles from "../../styles";
 import { ReactNode, useEffect, useState } from "react";
 import moment from "moment";
-import helpers from "../helpers";
-import { Luminary } from "../types";
+import helpers from "../../helpers";
+import { Luminary } from "../../types";
 
 interface DoubleOrbitProps {
   currentDate: Date;
@@ -11,22 +11,25 @@ interface DoubleOrbitProps {
 }
 
 const DoubleOrbit = (props: DoubleOrbitProps) => {
+  const currentDate = props.currentDate;
+  const luminary = props.luminary;
   const classes = useStyles();
   const [r1Rotation, setR1Rotation] = useState(0);
   const [r2Rotation, setR2Rotation] = useState(0);
 
   useEffect(() => {
-    const t1Diff = moment(props.luminary.t1.to).diff(props.luminary.t1.from);
-    const t1Position = moment(props.currentDate).diff(props.luminary.t1.from);
+    const t1Diff = moment(luminary.t1.to).diff(luminary.t1.from);
+    const t1Position = moment(currentDate).diff(luminary.t1.from);
     const newR1Rotation = helpers.scale(t1Position, 0, t1Diff, 0, 360);
 
-    const t2Diff = moment(props.luminary.t2.to).diff(props.luminary.t2.from);
-    const t2Position = moment(props.currentDate).diff(props.luminary.t2.from);
+    const t2Diff = moment(luminary.t2.to).diff(luminary.t2.from);
+    const t2Position = moment(currentDate).diff(luminary.t2.from);
     const newR2Rotation = helpers.scale(t2Position, 0, t2Diff, 0, 360);
 
     setR1Rotation(newR1Rotation);
     setR2Rotation(newR2Rotation);
-  }, [props.currentDate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentDate]);
 
   return (
     <div className={classes.orbit}>

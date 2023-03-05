@@ -1,8 +1,13 @@
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
+  wrapper: {
+    background: "#e9e9e9",
+    position: "fixed",
+  },
   body: {
-    // background: "#0972bb",
+    zIndex: 9,
+    textShadow: "0 0 5px #fff",
   },
   orbit: {
     position: "absolute",

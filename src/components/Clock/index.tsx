@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import Box from "@mui/material/Box";
 import useStyles from "../../styles";
 import Hour from "./components/Hour";
 import Minute from "./components/Minute";

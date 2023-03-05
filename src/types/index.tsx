@@ -16,3 +16,12 @@ export type Luminary = {
   };
   orbitColor: string;
 };
+
+export type SpeedOptions =
+  | "realtime"
+  | "minute"
+  | "hour"
+  | "2hours"
+  | "6hours"
+  | "12hours"
+  | "day";
