@@ -164,7 +164,7 @@ const Map = (props: MapProps) => {
           filter: "saturate(0) opacity(0.6)",
         }}
       />
-      {props.luminaries.map((luminarySettings, key) => (
+      {props.luminaries.map((luminarySettings, key) => luminarySettings.hide ? null : (
         <DoubleOrbit currentDate={props.currentDate} settings={luminarySettings} key={`luminary-${key}`} />
       ))}
       <Clock

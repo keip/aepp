@@ -6,13 +6,10 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import RadioGroup from "@mui/material/RadioGroup";
-import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
 import moment from "moment";
 import { Dispatch, SetStateAction } from "react";
-import { SpeedOptions } from "../../types";
-import Moon from "../Luminaries/Moon";
-import Sun from "../Luminaries/Sun";
+import { DoubleOrbitSettings, SpeedOptions } from "../../types";
 
 interface MapNavProps {
   currentDate: Date;
@@ -21,6 +18,8 @@ interface MapNavProps {
   speed: SpeedOptions;
   setUpdateRate: Dispatch<SetStateAction<number>>;
   updateRate: number;
+  luminaries: DoubleOrbitSettings[];
+  setLuminaries: Dispatch<SetStateAction<DoubleOrbitSettings[]>>;
 }
 
 const MapNav = (props: MapNavProps) => {
@@ -87,64 +86,34 @@ const MapNav = (props: MapNavProps) => {
               <FormControlLabel value="day" control={<Radio />} label="1d/s" />
             </RadioGroup>
           </Grid>
-          {/* <Grid item md={12}>
-            <Grid container justifyContent="space-between" alignItems="center">
-              <Grid item>
-                <Typography variant="h6">Frame rate</Typography>
-              </Grid>
-              <Grid item>
-                <Typography align="center">
-                  <b>
-                    {Math.round((1000 / props.updateRate) * 10) / 10}fps (
-                    {props.updateRate}
-                    ms)
-                  </b>
-                </Typography>
-              </Grid>
-            </Grid>
-            <Slider
-              value={props.updateRate}
-              step={10}
-              min={40}
-              max={300}
-              onChange={(event, value) => props.setUpdateRate(value as number)}
-            />
-          </Grid> */}
           <Grid item md={12}>
             <Typography variant="h5">Luminaries</Typography>
           </Grid>
           <Grid item md={12}>
             <Grid container spacing={1}>
-              <Grid item md={12}>
-                <FormControlLabel
-                  control={<Checkbox defaultChecked />}
-                  label={
-                    <Grid container alignItems="center" spacing={2}>
-                      <Grid item>
-                        <Sun />
+              {props.luminaries.map((luminary, key) => (
+                <Grid item md={12} key={`luminary-hide-${key}`}>
+                  <FormControlLabel
+                    control={<Checkbox checked={!luminary.hide} onChange={() => {
+                      props.setLuminaries(
+                        props.luminaries.map(
+                          (l, k) => key === k ? {...l, hide: !luminary.hide} : l
+                        )
+                      );
+                    }} />}
+                    label={
+                      <Grid container alignItems="center" spacing={2}>
+                        <Grid item>
+                          {luminary.body}
+                        </Grid>
+                        <Grid item>
+                          <Typography>{luminary.title}</Typography>
+                        </Grid>
                       </Grid>
-                      <Grid item>
-                        <Typography>Sun</Typography>
-                      </Grid>
-                    </Grid>
-                  }
-                />
-              </Grid>
-              <Grid item md={12}>
-                <FormControlLabel
-                  control={<Checkbox defaultChecked />}
-                  label={
-                    <Grid container alignItems="center" spacing={2}>
-                      <Grid item>
-                        <Moon />
-                      </Grid>
-                      <Grid item>
-                        <Typography>Moon</Typography>
-                      </Grid>
-                    </Grid>
-                  }
-                />
-              </Grid>
+                    }
+                  />
+                </Grid>
+              ))}
             </Grid>
           </Grid>
         </Grid>

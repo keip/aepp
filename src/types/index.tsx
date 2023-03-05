@@ -18,6 +18,7 @@ export type DoubleOrbitSettings = {
     from: Date;
     to: Date;
   };
+  hide?: boolean;
 };
 
 export type SpeedOptions =

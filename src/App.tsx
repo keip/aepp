@@ -87,6 +87,8 @@ const App = () => {
               setPanDisabled={setPanDisabled}
               setUpdateRate={setUpdateRate}
               updateRate={updateRate}
+              luminaries={luminaries}
+              setLuminaries={setLuminaries}
             />
           </Grid>
           <Grid item>
