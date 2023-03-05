@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import moment from "moment";
 import { Dispatch, SetStateAction } from "react";
 import { DoubleOrbitSettings, SpeedOptions } from "../../types";
+import Luminary from "../Luminary";
 
 interface MapNavProps {
   currentDate: Date;
@@ -104,7 +105,7 @@ const MapNav = (props: MapNavProps) => {
                     label={
                       <Grid container alignItems="center" spacing={2}>
                         <Grid item>
-                          {luminary.body}
+                          <Luminary size={luminary.size} color={luminary.color} />
                         </Grid>
                         <Grid item>
                           <Typography>{luminary.title}</Typography>

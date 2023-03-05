@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import moment from "moment";
 import helpers from "../../helpers";
 import { DoubleOrbitSettings } from "../../types";
+import Luminary from "../Luminary";
 
 interface DoubleOrbitProps {
   currentDate: Date;
@@ -61,10 +62,10 @@ const DoubleOrbit = (props: DoubleOrbitProps) => {
               display: "flex",
               justifyContent: "center",
               height: "100%",
-              marginTop: "-0.5vh",
+              marginTop: `-${settings.size / 2}vh`,
             }}
           >
-            {settings.body}
+            <Luminary size={settings.size} color={settings.color} />
           </div>
         </div>
       </div>

@@ -25,7 +25,7 @@ const Map = (props: MapProps) => {
   const updateRate = props.updateRate;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [panOrigin, setPanOrigin] = useState({ x: 0, y: 0 });
-  const [panPosition, setPanPosition] = useState({ x: 180, y: 0 });
+  const [panPosition, setPanPosition] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1.5);
 
   useEffect(() => {
@@ -162,7 +162,7 @@ const Map = (props: MapProps) => {
         style={{
           width: "100%",
           height: "100%",
-          filter: "saturate(0) opacity(0.6)",
+          filter: "saturate(0) opacity(0.8) invert(1)",
         }}
       />
       {/* <img

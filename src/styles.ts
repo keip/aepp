@@ -2,7 +2,7 @@ import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   wrapper: {
-    background: "#e9e9e9",
+    background: "#141414",
     position: "fixed",
   },
   body: {
@@ -29,18 +29,18 @@ const useStyles = makeStyles({
   },
   northPole: {
     position: "absolute",
-    top: "calc(50% - 1vh)",
-    left: "calc(50% - 1vh)",
-    width: "2vh",
-    height: "2vh",
+    top: "calc(50% - 0.6vh)",
+    left: "calc(50% - 0.6vh)",
+    width: "1.2vh",
+    height: "1.2vh",
     borderRadius: 30,
-    background: "#000",
+    background: "#ccc",
   },
   hourHand: {
     width: "0.8vh",
     height: "25vh",
     marginTop: "25vh",
-    background: "#222",
+    background: "#ccc",
     marginLeft: "calc(50% - 0.4vh)",
     boxShadow: "0 0 10px rgb(0 0 0 / 30%)",
     borderRadius: "100% 100% 0 0",
@@ -51,7 +51,7 @@ const useStyles = makeStyles({
     width: "0.6vh",
     height: "30vh",
     marginTop: "20vh",
-    background: "#222",
+    background: "#ccc",
     marginLeft: "calc(50% - 0.3vh)",
     boxShadow: "0 0 10px rgb(0 0 0 / 30%)",
     borderRadius: "100% 100% 0 0",
@@ -60,7 +60,7 @@ const useStyles = makeStyles({
     width: "0.3vh",
     height: "35vh",
     marginTop: "15vh",
-    background: "#222",
+    background: "#ccc",
     marginLeft: "calc(50% - 0.15vh)",
     boxShadow: "0 0 10px rgb(0 0 0 / 30%)",
     borderRadius: "100% 100% 0 0",

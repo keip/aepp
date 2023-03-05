@@ -6,10 +6,6 @@ import { DoubleOrbitSettings, SpeedOptions } from "./types";
 import MapNav from "./components/MapNav";
 import Map from "./components/Map";
 import moment from "moment";
-import Sun from "./components/Luminaries/Sun";
-import Moon from "./components/Luminaries/Moon";
-import Mars from "./components/Luminaries/Mars";
-import Venus from "./components/Luminaries/Venus";
 
 const App = () => {
   const classes = useStyles();
@@ -22,7 +18,7 @@ const App = () => {
     {
       title: "Sun",
       color: "#fff96b",
-      body: <Sun />,
+      size: 2,
       r1: 0.404,
       t1: {
         from: moment().startOf("day").toDate(),
@@ -37,7 +33,7 @@ const App = () => {
     {
       title: "Moon",
       color: "#ffffff",
-      body: <Moon />,
+      size: 2,
       r1: 0.404,
       t1: {
         from: moment().startOf("day").toDate(),
@@ -53,7 +49,7 @@ const App = () => {
     {
       title: "Venus",
       color: "#ffb14f",
-      body: <Venus />,
+      size: 1,
       r1: 0.384,
       t1: {
         from: moment().startOf("day").toDate(),
@@ -68,7 +64,7 @@ const App = () => {
     {
       title: "Mars",
       color: "#ff4f4f",
-      body: <Mars />,
+      size: 1,
       r1: 0.424,
       t1: {
         from: moment().startOf("day").toDate(),
