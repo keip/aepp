@@ -5,7 +5,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Clock from "../Clock";
 import DoubleOrbit from "../DoubleOrbit";
 import mapImage from "../../assets/standard_map_full.png";
-import constellationsImage from '../../assets/azimutal-equidistant-constellations.png';
+// import constellationsImage from '../../assets/azimutal-equidistant-constellations.png';
 import { DoubleOrbitSettings, SpeedOptions } from "../../types";
 
 interface MapProps {
