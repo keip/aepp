@@ -9,11 +9,12 @@ import moment from "moment";
 import Sun from "./components/Luminaries/Sun";
 import Moon from "./components/Luminaries/Moon";
 import Mars from "./components/Luminaries/Mars";
+import Venus from "./components/Luminaries/Venus";
 
 const App = () => {
   const classes = useStyles();
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [updateRate, setUpdateRate] = useState(40);
+  const [updateRate, setUpdateRate] = useState(100);
   const [panning, setPanning] = useState(false);
   const [panDisabled, setPanDisabled] = useState(false);
   const [speed, setSpeed] = useState<SpeedOptions>("realtime");
@@ -39,28 +40,44 @@ const App = () => {
       body: <Moon />,
       r1: 0.404,
       t1: {
-        from: moment().startOf("day").add(12, "hours").toDate(),
-        to: moment().endOf("day").add(12, "hours").toDate(),
+        from: moment().startOf("day").toDate(),
+        to: moment().endOf("day").toDate(),
       },
       r2: 0.105,
       t2: {
         from: moment().startOf("year").toDate(),
         to: moment().endOf("year").toDate(),
       },
+      hide: true,
+    },
+    {
+      title: "Venus",
+      color: "#ffb14f",
+      body: <Venus />,
+      r1: 0.384,
+      t1: {
+        from: moment().startOf("day").toDate(),
+        to: moment().endOf("day").toDate(),
+      },
+      r2: 0.2,
+      t2: {
+        from: moment('20170325', 'YYYYMMDD').toDate(),
+        to: moment('20170325', 'YYYYMMDD').add(224.8, "days").toDate(),
+      },
     },
     {
       title: "Mars",
       color: "#ff4f4f",
       body: <Mars />,
-      r1: 0.2,
+      r1: 0.424,
       t1: {
-        from: moment().toDate(),
-        to: moment().add(12, "hours").toDate(),
+        from: moment().startOf("day").toDate(),
+        to: moment().endOf("day").toDate(),
       },
-      r2: 0.03,
+      r2: 0.3,
       t2: {
-        from: moment().toDate(),
-        to: moment().add(1, "week").toDate(),
+        from: moment('20211007').toDate(),
+        to: moment('20211007').add(686.93, "days").toDate(),
       },
     },
   ]);

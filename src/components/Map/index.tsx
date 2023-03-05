@@ -4,7 +4,8 @@ import moment from "moment";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Clock from "../Clock";
 import DoubleOrbit from "../DoubleOrbit";
-import map from "../../assets/standard_map_full.png";
+import mapImage from "../../assets/standard_map_full.png";
+import constellationsImage from '../../assets/azimutal-equidistant-constellations.png';
 import { DoubleOrbitSettings, SpeedOptions } from "../../types";
 
 interface MapProps {
@@ -156,7 +157,7 @@ const Map = (props: MapProps) => {
       }}
     >
       <img
-        src={map}
+        src={mapImage}
         alt="Azimuthal Equidistant map"
         style={{
           width: "100%",
@@ -164,6 +165,15 @@ const Map = (props: MapProps) => {
           filter: "saturate(0) opacity(0.6)",
         }}
       />
+      {/* <img
+        src={constellationsImage}
+        alt="Azimuthal Equidistant constellations map"
+        style={{
+          width: "100%",
+          height: "100%",
+          filter: "saturate(0) opacity(0.6)",
+        }}
+      /> */}
       {props.luminaries.map((luminarySettings, key) => luminarySettings.hide ? null : (
         <DoubleOrbit currentDate={props.currentDate} settings={luminarySettings} key={`luminary-${key}`} />
       ))}
