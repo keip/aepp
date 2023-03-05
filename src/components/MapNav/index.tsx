@@ -87,7 +87,7 @@ const MapNav = (props: MapNavProps) => {
               <FormControlLabel value="day" control={<Radio />} label="1d/s" />
             </RadioGroup>
           </Grid>
-          <Grid item md={12}>
+          {/* <Grid item md={12}>
             <Grid container justifyContent="space-between" alignItems="center">
               <Grid item>
                 <Typography variant="h6">Frame rate</Typography>
@@ -109,7 +109,7 @@ const MapNav = (props: MapNavProps) => {
               max={300}
               onChange={(event, value) => props.setUpdateRate(value as number)}
             />
-          </Grid>
+          </Grid> */}
           <Grid item md={12}>
             <Typography variant="h5">Luminaries</Typography>
           </Grid>

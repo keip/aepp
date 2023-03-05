@@ -4,13 +4,12 @@ import moment from "moment";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Clock from "../Clock";
 import DoubleOrbit from "../DoubleOrbit";
-import Mars from "../Luminaries/Mars";
-import Moon from "../Luminaries/Moon";
-import Sun from "../Luminaries/Sun";
 import map from "../../assets/standard_map_full.png";
-import { SpeedOptions } from "../../types";
+import { DoubleOrbitSettings, SpeedOptions } from "../../types";
 
 interface MapProps {
+  setLuminaries: Dispatch<SetStateAction<DoubleOrbitSettings[]>>;
+  luminaries: DoubleOrbitSettings[];
   setSpeed: Dispatch<SetStateAction<SpeedOptions>>;
   speed: SpeedOptions;
   setCurrentDate: Dispatch<SetStateAction<Date>>;
@@ -165,61 +164,9 @@ const Map = (props: MapProps) => {
           filter: "saturate(0) opacity(0.6)",
         }}
       />
-      <DoubleOrbit
-        currentDate={props.currentDate}
-        luminary={{
-          title: "Moon",
-          r1: 0.404,
-          t1: {
-            from: moment().startOf("day").add(12, "hours").toDate(),
-            to: moment().endOf("day").add(12, "hours").toDate(),
-          },
-          r2: 0.105,
-          t2: {
-            from: moment().startOf("year").toDate(),
-            to: moment().endOf("year").toDate(),
-          },
-
-          orbitColor: "#ffffff",
-        }}
-        body={<Moon />}
-      />
-      <DoubleOrbit
-        currentDate={props.currentDate}
-        luminary={{
-          title: "Sun",
-          r1: 0.404,
-          t1: {
-            from: moment().startOf("day").toDate(),
-            to: moment().endOf("day").toDate(),
-          },
-          r2: 0.105,
-          t2: {
-            from: moment().startOf("year").toDate(),
-            to: moment().endOf("year").toDate(),
-          },
-          orbitColor: "#fff96b",
-        }}
-        body={<Sun />}
-      />
-      <DoubleOrbit
-        currentDate={props.currentDate}
-        luminary={{
-          title: "Mars",
-          r1: 0.2,
-          t1: {
-            from: moment().toDate(),
-            to: moment().add(12, "hours").toDate(),
-          },
-          r2: 0.03,
-          t2: {
-            from: moment().toDate(),
-            to: moment().add(1, "week").toDate(),
-          },
-          orbitColor: "#ff4f4f",
-        }}
-        body={<Mars />}
-      />
+      {props.luminaries.map((luminarySettings, key) => (
+        <DoubleOrbit currentDate={props.currentDate} settings={luminarySettings} key={`luminary-${key}`} />
+      ))}
       <Clock
         currentDate={props.currentDate}
         seconds={props.speed === "realtime"}
