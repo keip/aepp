@@ -1,16 +1,18 @@
 {
   "files": {
     "main.css": "./static/css/main.e6c13ad2.css",
-    "main.js": "./static/js/main.bd4a19d2.js",
+    "main.js": "./static/js/main.1cffd349.js",
     "static/js/787.31d2916a.chunk.js": "./static/js/787.31d2916a.chunk.js",
     "static/media/standard_map_full.png": "./static/media/standard_map_full.50b4dfe917e07a0c0242.png",
+    "static/media/azimutal-equidistant-color.png": "./static/media/azimutal-equidistant-color.b90fa69851348be1a817.png",
+    "static/media/azimutal-equidistant-constellations.png": "./static/media/azimutal-equidistant-constellations.54ced1e0047bf334e1a7.png",
     "index.html": "./index.html",
     "main.e6c13ad2.css.map": "./static/css/main.e6c13ad2.css.map",
-    "main.bd4a19d2.js.map": "./static/js/main.bd4a19d2.js.map",
+    "main.1cffd349.js.map": "./static/js/main.1cffd349.js.map",
     "787.31d2916a.chunk.js.map": "./static/js/787.31d2916a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.bd4a19d2.js"
+    "static/js/main.1cffd349.js"
   ]
 }
