@@ -2,15 +2,16 @@ import { useState } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import useStyles from "./styles";
-import { DoubleOrbitSettings, SpeedOptions } from "./types";
+import { DoubleOrbitSettings, SpeedOptions, ViewOptions } from "./types";
 import MapNav from "./components/MapNav";
 import Map from "./components/Map";
 import moment from "moment";
 
 const App = () => {
   const classes = useStyles();
+  const [view, setView] = useState<ViewOptions>('color');
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [updateRate, setUpdateRate] = useState(100);
+  const [updateRate, setUpdateRate] = useState(1000);
   const [panning, setPanning] = useState(false);
   const [panDisabled, setPanDisabled] = useState(false);
   const [speed, setSpeed] = useState<SpeedOptions>("realtime");
@@ -95,6 +96,7 @@ const App = () => {
           <Grid item md={2} sm={12} className={classes.body}>
             <MapNav
               currentDate={currentDate}
+              setCurrentDate={setCurrentDate}
               speed={speed}
               setSpeed={setSpeed}
               setPanDisabled={setPanDisabled}
@@ -102,6 +104,8 @@ const App = () => {
               updateRate={updateRate}
               luminaries={luminaries}
               setLuminaries={setLuminaries}
+              view={view}
+              setView={setView}
             />
           </Grid>
           <Grid item>
@@ -115,6 +119,7 @@ const App = () => {
               updateRate={updateRate}
               luminaries={luminaries}
               setLuminaries={setLuminaries}
+              view={view}
             />
           </Grid>
         </Grid>

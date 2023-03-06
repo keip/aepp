@@ -38,8 +38,8 @@ const useStyles = makeStyles({
   },
   hourHand: {
     width: "0.8vh",
-    height: "25vh",
-    marginTop: "25vh",
+    height: "20.2vh",
+    marginTop: "29.8vh",
     background: "#ccc",
     marginLeft: "calc(50% - 0.4vh)",
     boxShadow: "0 0 10px rgb(0 0 0 / 30%)",

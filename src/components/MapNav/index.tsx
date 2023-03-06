@@ -9,11 +9,12 @@ import RadioGroup from "@mui/material/RadioGroup";
 import Typography from "@mui/material/Typography";
 import moment from "moment";
 import { Dispatch, SetStateAction } from "react";
-import { DoubleOrbitSettings, SpeedOptions } from "../../types";
+import { DoubleOrbitSettings, SpeedOptions, ViewOptions } from "../../types";
 import Luminary from "../Luminary";
 
 interface MapNavProps {
   currentDate: Date;
+  setCurrentDate: Dispatch<SetStateAction<Date>>;
   setPanDisabled: Dispatch<SetStateAction<boolean>>;
   setSpeed: Dispatch<SetStateAction<SpeedOptions>>;
   speed: SpeedOptions;
@@ -21,6 +22,8 @@ interface MapNavProps {
   updateRate: number;
   luminaries: DoubleOrbitSettings[];
   setLuminaries: Dispatch<SetStateAction<DoubleOrbitSettings[]>>;
+  view: ViewOptions;
+  setView: Dispatch<SetStateAction<ViewOptions>>;
 }
 
 const MapNav = (props: MapNavProps) => {
@@ -48,6 +51,32 @@ const MapNav = (props: MapNavProps) => {
           </Grid>
           <Grid item md={12}>
             <Divider />
+          </Grid>
+          <Grid item md={12}>
+            <Typography variant="h6">View</Typography>
+            <RadioGroup
+              row
+              onChange={(event) =>
+                props.setView(event.target.value as ViewOptions)
+              }
+              value={props.view}
+            >
+              <FormControlLabel
+                value="xray"
+                control={<Radio />}
+                label="X-ray"
+              />
+              <FormControlLabel
+                value="color"
+                control={<Radio />}
+                label="Color"
+              />
+              <FormControlLabel
+                value="constellations"
+                control={<Radio />}
+                label="Constellations"
+              />
+            </RadioGroup>
           </Grid>
           <Grid item md={12}>
             <Typography variant="h6">Speed</Typography>

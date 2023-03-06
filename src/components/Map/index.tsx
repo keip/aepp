@@ -5,8 +5,9 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Clock from "../Clock";
 import DoubleOrbit from "../DoubleOrbit";
 import mapImage from "../../assets/standard_map_full.png";
-// import constellationsImage from '../../assets/azimutal-equidistant-constellations.png';
-import { DoubleOrbitSettings, SpeedOptions } from "../../types";
+import mapColorImage from "../../assets/azimutal-equidistant-color.png";
+import constellationsImage from '../../assets/azimutal-equidistant-constellations.png';
+import { DoubleOrbitSettings, SpeedOptions, ViewOptions } from "../../types";
 
 interface MapProps {
   setLuminaries: Dispatch<SetStateAction<DoubleOrbitSettings[]>>;
@@ -18,6 +19,7 @@ interface MapProps {
   setPanning: Dispatch<SetStateAction<boolean>>;
   panning: boolean;
   updateRate: number;
+  view: ViewOptions;
 }
 
 const Map = (props: MapProps) => {
@@ -31,44 +33,44 @@ const Map = (props: MapProps) => {
   useEffect(() => {
     const interval = setInterval(() => {
       props.setPanning((panning) => {
-        if (!panning) {
+        if (!panning && props.speed !== 'custom') {
           props.setSpeed((speed) => {
             if (speed === "realtime") {
               props.setCurrentDate(new Date());
             } else if (speed === "minute") {
               props.setCurrentDate((currentDate) =>
                 moment(currentDate)
-                  .add(updateRate / 16.5, "seconds")
+                  .add(1, "minute")
                   .toDate()
               );
             } else if (speed === "hour") {
               props.setCurrentDate((currentDate) =>
                 moment(currentDate)
-                  .add(updateRate / 16.5, "minutes")
+                  .add(1, "hour")
                   .toDate()
               );
             } else if (speed === "2hours") {
               props.setCurrentDate((currentDate) =>
                 moment(currentDate)
-                  .add((updateRate / 16.5) * 2, "minutes")
+                  .add(2, "hours")
                   .toDate()
               );
             } else if (speed === "6hours") {
               props.setCurrentDate((currentDate) =>
                 moment(currentDate)
-                  .add((updateRate / 16.5) * 6, "minutes")
+                  .add(6, "hours")
                   .toDate()
               );
             } else if (speed === "12hours") {
               props.setCurrentDate((currentDate) =>
                 moment(currentDate)
-                  .add((updateRate / 16.5) * 12, "minutes")
+                  .add(12, "hours")
                   .toDate()
               );
             } else if (speed === "day") {
               props.setCurrentDate((currentDate) =>
                 moment(currentDate)
-                  .add((updateRate / 16.5) * 24, "minutes")
+                  .add(1, "day")
                   .toDate()
               );
             }
@@ -154,26 +156,41 @@ const Map = (props: MapProps) => {
         transform: `scale(${zoom}) translate(${-panPosition.x / zoom}px, ${
           -panPosition.y / zoom
         }px)`,
+        transition: 'transform 0.1s'
       }}
     >
-      <img
-        src={mapImage}
-        alt="Azimuthal Equidistant map"
-        style={{
-          width: "100%",
-          height: "100%",
-          filter: "saturate(0) opacity(0.8) invert(1)",
-        }}
-      />
-      {/* <img
-        src={constellationsImage}
-        alt="Azimuthal Equidistant constellations map"
-        style={{
-          width: "100%",
-          height: "100%",
-          filter: "saturate(0) opacity(0.6)",
-        }}
-      /> */}
+      {props.view === 'xray' && (
+        <img
+          src={mapImage}
+          alt="Azimuthal Equidistant map"
+          style={{
+            width: "100%",
+            height: "100%",
+            filter: "saturate(0) opacity(0.8) invert(1)",
+          }}
+        />
+      )}
+      {props.view === 'color' && (
+        <img
+          src={mapColorImage}
+          alt="Azimuthal Equidistant map"
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+        />
+      )}
+      {props.view === 'constellations' && (
+        <img
+          src={constellationsImage}
+          alt="Azimuthal Equidistant constellations map"
+          style={{
+            width: "100%",
+            height: "100%",
+            filter: "saturate(0) opacity(0.6)",
+          }}
+        />
+      )}
       {props.luminaries.map((luminarySettings, key) => luminarySettings.hide ? null : (
         <DoubleOrbit currentDate={props.currentDate} settings={luminarySettings} key={`luminary-${key}`} />
       ))}

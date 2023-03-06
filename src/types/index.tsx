@@ -19,6 +19,8 @@ export type DoubleOrbitSettings = {
   hide?: boolean;
 };
 
+export type ViewOptions = 'xray' | 'color' | 'constellations';
+
 export type SpeedOptions =
   | "realtime"
   | "custom"
