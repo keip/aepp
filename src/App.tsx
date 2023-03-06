@@ -19,7 +19,7 @@ const App = () => {
     {
       title: "Sun",
       color: "#fff96b",
-      size: 2,
+      size: 1,
       r1: 0.404,
       t1: {
         from: moment().startOf("day").toDate(),
@@ -34,7 +34,7 @@ const App = () => {
     {
       title: "Moon",
       color: "#ffffff",
-      size: 2,
+      size: 1,
       r1: 0.404,
       t1: {
         from: moment().startOf("day").toDate(),
@@ -50,7 +50,7 @@ const App = () => {
     {
       title: "Venus",
       color: "#ffb14f",
-      size: 1,
+      size: 0.5,
       r1: 0.384,
       t1: {
         from: moment().startOf("day").toDate(),
@@ -65,7 +65,7 @@ const App = () => {
     {
       title: "Mars",
       color: "#ff4f4f",
-      size: 1,
+      size: 0.5,
       r1: 0.424,
       t1: {
         from: moment().startOf("day").toDate(),

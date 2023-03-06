@@ -16,6 +16,7 @@ const DoubleOrbit = (props: DoubleOrbitProps) => {
   const classes = useStyles();
   const [r1Rotation, setR1Rotation] = useState(0);
   const [r2Rotation, setR2Rotation] = useState(0);
+  const [hover, setHover] = useState(false);
 
   useEffect(() => {
     const t1Diff = moment(settings.t1.to).diff(settings.t1.from);
@@ -41,7 +42,7 @@ const DoubleOrbit = (props: DoubleOrbitProps) => {
           height: `${settings.r1 * 100}vh`,
           left: `${((1 - settings.r1) * 100) / 2}vh`,
           top: `${((1 - settings.r1) * 100) / 2}vh`,
-          boxShadow: `0 0 0 0.1vh ${settings.color}`,
+          boxShadow: hover ? `0 0 0 0.1vh ${settings.color}` : undefined,
         }}
         className={classes.orbitPath}
       >
@@ -53,7 +54,7 @@ const DoubleOrbit = (props: DoubleOrbitProps) => {
             transform: `rotate(${r2Rotation}deg)`,
             width: `${settings.r2 * 100}vh`,
             height: `${settings.r2 * 100}vh`,
-            boxShadow: `0 0 0 0.1vh ${settings.color}`,
+            boxShadow: hover ? `0 0 0 0.1vh ${settings.color}` : undefined,
           }}
           className={classes.orbitPath}
         >
@@ -65,7 +66,7 @@ const DoubleOrbit = (props: DoubleOrbitProps) => {
               marginTop: `-${settings.size / 2}vh`,
             }}
           >
-            <Luminary size={settings.size} color={settings.color} />
+            <Luminary size={settings.size} color={settings.color} onHover={() => {console.log('hover'); setHover(true)}} onLeave={() => setHover(false)} />
           </div>
         </div>
       </div>

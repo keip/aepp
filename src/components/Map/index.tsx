@@ -191,9 +191,6 @@ const Map = (props: MapProps) => {
           }}
         />
       )}
-      {props.luminaries.map((luminarySettings, key) => luminarySettings.hide ? null : (
-        <DoubleOrbit currentDate={props.currentDate} settings={luminarySettings} key={`luminary-${key}`} />
-      ))}
       <Clock
         currentDate={props.currentDate}
         seconds={props.speed === "realtime"}
@@ -203,6 +200,9 @@ const Map = (props: MapProps) => {
           props.speed !== "day"
         }
       />
+      {props.luminaries.map((luminarySettings, key) => luminarySettings.hide ? null : (
+        <DoubleOrbit currentDate={props.currentDate} settings={luminarySettings} key={`luminary-${key}`} />
+      ))}
     </Box>
   );
 };

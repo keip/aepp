@@ -4,13 +4,15 @@ import useStyles from "../../styles";
 export type LuminaryProps = {
   size: number;
   color: string;
+  onHover?: () => void;
+  onLeave?: () => void;
 }
 
 const Luminary = (props: LuminaryProps) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.luminary}>
+    <div className={classes.luminary} onMouseOver={() => props.onHover?.()} onMouseLeave={() => props.onLeave?.()}>
       <div
         style={{
           display: "inline-block",
